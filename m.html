@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        .kalkulator {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            border: 2px solid black;
+            border-radius: 10px;
+            width: 250px;
+            padding: 10px;
+        }
+        .kalkulator > * {
+            margin: 5px 0;
+        }
+        .kalkulator > .screen {
+            width: 100%;
+            height: 35px;
+            text-align: right;
+            font-size: 25px;
+            border-radius: 10px;
+            border: 2px solid black;
+            padding: 5px;
+            margin: 0;
+            box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        .kalkulator > .buttons {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 10px;
+        }
+        .kalkulator > .buttons > button {
+            width: 100%;
+            height: 40px;
+            font-size: 25px;
+            background-color: #fff;
+            border: 1px solid burlywood;
+            cursor: pointer;
+            box-shadow: inset 0 1px 3px #ddd;
+        }
+        .kalkulator > .buttons > .special {
+            background-color: antiquewhite;
+        }
+        .kalkulator > .buttons > button:hover {
+            background-color: beige;
+        }
+    </style>
+</head>
+<body>
+    <div class="kalkulator">
+        
+    <input type="text" placeholder="0" class="screen">
+    <div class="buttons">
+    <button onclick="clearNum()" class="special">AC</button>
+    <button onclick="deleteNum()" class="special">Del</button>
+    <button onclick="inputAdd('/')" class="special">/</button>
+    <button onclick="inputAdd('*')" class="special">*</button>
+    <button onclick="inputAdd(7)">7</button>
+    <button onclick="inputAdd(8)">8</button>
+    <button onclick="inputAdd(9)">9</button>
+    <button onclick="inputAdd('-')" class="special">-</button>
+    <button onclick="inputAdd(4)">4</button>
+    <button onclick="inputAdd(5)">5</button>
+    <button onclick="inputAdd(6)">6</button>
+    <button onclick="inputAdd('+')" class="special">+</button>
+    <button onclick="inputAdd(1)">1</button>
+    <button onclick="inputAdd(2)">2</button>
+    <button onclick="inputAdd(3)">3</button>
+    <button onclick="calculate()">=</button>
+    <button onclick="inputAdd(0)">0</button>
+    <button onclick="inputAdd('.')">.</button>
+    </div>
+    </div>
+    <script>
+        function inputAdd(num) {
+            var input = document.querySelector('.kalkulator .screen');
+            input.value = input.value + num;
+        }
+        function calculate() {
+            var input = document.querySelector('.kalkulator .screen');
+            var result = eval(input.value);
+            result = parseInt(result);
+            input.value = result;
+        }
+        function clearNum() {
+            var input = document.querySelector('.kalkulator .screen')
+            input.value = '' ;
+        }
+        function deleteNum() {
+            var input = document.querySelector('.kalkulator .screen')
+            input.value = input.value.slice(0, -1);
+        }
+    </script>
+</body>
+</html>
